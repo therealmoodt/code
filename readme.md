@@ -116,3 +116,14 @@ Auto Reboot: The script is configured to automatically reboot the machine upon d
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+
+
+
+- change your passeword here >> ![image](https://github.com/user-attachments/assets/df0e7b39-6889-4ee3-830c-a204afe86cc8)
+- change PL > ![image](https://github.com/user-attachments/assets/4e8ccb75-789d-41b6-a2fd-8772f128f241)
+
+
+ 
+
