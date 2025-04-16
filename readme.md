@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/ea7e683e-1d5c-4b0e-be86-2b6c3b4e63db)
 
 # Auto GPU Fan Control
 
@@ -85,6 +86,7 @@ Add the following line (replace your_username with your actual username):
 plaintext
 
 your_username ALL=(ALL) NOPASSWD: /usr/bin/python3 /home/<your_username>/py-nvtool.py
+
 Warning: Using this configuration may present security risks. Make sure you understand the implications.
 
 - Step 8: Save Your Script & Run It
