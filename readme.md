@@ -2,131 +2,69 @@
 
 # Auto GPU Fan Control
 
-This project provides a Python script to automatically adjust GPU fan speeds on Ubuntu based on the temperature. The script also handles power limits (PL) for each GPU and can reboot the machine in case of critical errors.
+This Python script automatically manages GPU fan speeds and power limits on Ubuntu systems. It monitors GPU temperatures and can reboot the machine if a critical error occurs.
 
 ## Table of Contents
-
 - [Features](#features)
 - [Prerequisites](#prerequisites)
-- [Installation Guide](#installation-guide)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Optional Configuration](#optional-configuration)
+- [Optional Customization](#optional-customization)
 - [License](#license)
+- [Screenshots](#screenshots)
 
-## Features
+## ✨ Features
+- **Automatic Fan Control:** Dynamically adjusts GPU fan speed.
+- **GPU Monitoring:** Shows temperature, power draw and memory usage via `nvidia-smi`.
+- **Safe Reboot:** Reboots the machine if a critical GPU error is detected.
+- **Rich Console Output:** Uses the [rich](https://github.com/Textualize/rich) library.
 
-- **Automatic Fan Control:** Adjusts GPU fan speed dynamically based on temperature.
-- **GPU Monitoring:** Displays temperature, fan speed, power draw, and memory usage for each GPU using `nvidia-smi`.
-- **Safe Reboot:** Automatically reboots the machine if a critical GPU error is detected.
-- **Detailed Console Output:** Uses the [rich](https://github.com/Textualize/rich) library for enhanced command-line interface aesthetics.
-
-## Prerequisites
-
-Before running the script, ensure that your Ubuntu machine is set up with the following:
-
-- A fresh Ubuntu installation.
+## 📋 Prerequisites
+- Ubuntu with NVIDIA drivers installed.
 - Python 3 and pip.
-- NVIDIA drivers and CUDA toolkit (if applicable).
-- `nvidia-smi` (comes with NVIDIA drivers).
-- [lm-sensors](https://en.wikipedia.org/wiki/Lm_sensors) for reading hardware sensor data.
-- The required Python modules.
+- `nvidia-smi` and [`lm-sensors`](https://en.wikipedia.org/wiki/Lm_sensors).
+- Required Python modules (e.g. `rich`).
 
-## Installation Guide
-
-Follow these steps on a fresh Ubuntu installation:
-
-- ### Step 1: Update & Upgrade the System  
-💾 **Update package lists and upgrade existing packages:**
-
-
+## 🛠 Installation
+1. Update package lists:
+```bash
 sudo apt update && sudo apt upgrade -y
-
-- Step 2: Install Python 3 and pip
-🐍 Ensure that Python 3 and pip are installed:
-
-
+```
+2. Install Python and pip:
+```bash
 sudo apt install python3 python3-pip -y
-
-- Step 3: Install Required Python Modules
-📦 Install the rich library for enhanced terminal output:
-
-
+```
+3. Install Python dependencies:
+```bash
 pip3 install rich
-
-- Step 4: Install NVIDIA Drivers and CUDA (if applicable)
-🎮 Install the NVIDIA drivers and CUDA toolkit if you use NVIDIA GPUs:
-
-
+```
+4. Install NVIDIA tools and CUDA (optional):
+```bash
 sudo ubuntu-drivers autoinstall
 sudo apt install nvidia-cuda-toolkit -y
-Remember to reboot your machine after installing the drivers.
-
-- Step 5: Verify NVIDIA Tools
-🖥️ Ensure nvidia-smi is installed (it comes with the NVIDIA drivers):
-
-
-nvidia-smi
-If you need the py-nvtool.py (utilized in the script), make sure it is located in the path specified in the script (/home/<your_username>/py-nvtool.py). Alternatively, adjust the path within the script.
-
-- Step 6: Install lm-sensors
-🌡️ Install and configure lm-sensors for temperature monitoring:
-
-
+```
+5. Install and configure `lm-sensors`:
+```bash
 sudo apt install lm-sensors -y
 sudo sensors-detect
-Answer 'yes' to the proposed questions to detect your sensors.
+```
 
-- Step 7: Configure Sudoers (Optional)
-🔐 Optionally, configure sudoers to run the NVIDIA tool script without a password prompt:
-
-
-sudo visudo
-Add the following line (replace your_username with your actual username):
-
-plaintext
-
-your_username ALL=(ALL) NOPASSWD: /usr/bin/python3 /home/<your_username>/py-nvtool.py
-
-Warning: Using this configuration may present security risks. Make sure you understand the implications.
-
-- Step 8: Save Your Script & Run It
-📁 Place your updated controlev4.py in a directory of your choice and make it executable:
-
-
+## 🚀 Usage
+Make the script executable and run it:
+```bash
 chmod +x controlev4.py
-Then run the script:
-
-
 python3 controlev4.py
-Usage
-The script will continuously monitor your GPU and CPU temperatures.
+```
+The script monitors your GPU and CPU temperatures, automatically adjusting fan speed and power limits. Press `Ctrl+C` to exit.
 
-Based on the GPU temperature, it automatically adjusts the fan speed and power limits.
+### 🔧 Optional Customization
+Edit the `pl_values` dictionary inside `controlev4.py` to set custom power limits for each GPU.
 
-In case of a critical error (e.g., GPU temperature not available), the script will initiate a system reboot.
+## 📜 License
+This project is licensed under the MIT License.
 
-Use Ctrl+C to stop the script gracefully.
-
-Optional Configuration
-Customize Power Limits: Modify the pl_values dictionary in the script to set individual power limits (PL) for each GPU.
-
-Script Path: Ensure that the path for py-nvtool.py in the script corresponds to its actual location on your system.
-
-Auto Reboot: The script is configured to automatically reboot the machine upon detecting a critical GPU error. Edit the initiate_reboot function if needed.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-
-
-- change your passeword here 
-
+## 📷 Screenshots
+- Change your password here
 ![image](https://github.com/user-attachments/assets/df0e7b39-6889-4ee3-830c-a204afe86cc8)
-
-- change PL
-
+- Change PL
 ![image](https://github.com/user-attachments/assets/4e8ccb75-789d-41b6-a2fd-8772f128f241)
-
-
- 
-
